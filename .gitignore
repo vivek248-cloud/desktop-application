@@ -1,0 +1,18 @@
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# .NET build output
+**/bin/
+**/obj/
+**/publish/
+.vs/
+*.pdb
+*.user
+
+# Generated installers and packages
+artifacts/
+*.msix
+*.appx

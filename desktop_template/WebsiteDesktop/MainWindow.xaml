@@ -1,0 +1,103 @@
+﻿
+<Window x:Class="WebsiteDesktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        Title="My Business App"
+        Height="700"
+        Width="1100"
+        MinHeight="450"
+        MinWidth="700"
+        WindowStartupLocation="CenterScreen"
+        Background="#F3F6FA">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="52"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Application toolbar -->
+        <Border x:Name="ToolbarBorder"
+                Grid.Row="0"
+                Background="#173A63">
+            <DockPanel LastChildFill="True" Margin="10,0">
+
+                <TextBlock x:Name="AppTitle"
+                           Text="My Business App"
+                           Foreground="White"
+                           FontSize="16"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"
+                           DockPanel.Dock="Left"
+                           Margin="0,0,18,0"/>
+
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            DockPanel.Dock="Right">
+
+                    <Button Content="←"
+                            Width="42"
+                            Height="32"
+                            Margin="3"
+                            Click="Back_Click"
+                            ToolTip="Go back"/>
+
+                    <Button Content="→"
+                            Width="42"
+                            Height="32"
+                            Margin="3"
+                            Click="Forward_Click"
+                            ToolTip="Go forward"/>
+
+                    <Button Content="↻"
+                            Width="42"
+                            Height="32"
+                            Margin="3"
+                            Click="Refresh_Click"
+                            ToolTip="Refresh"/>
+
+                    <Button Content="Fullscreen"
+                            Height="32"
+                            Padding="10,0"
+                            Margin="3"
+                            Click="Fullscreen_Click"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <!-- Embedded browser and loading screen -->
+        <Grid Grid.Row="1">
+
+            <wv2:WebView2 x:Name="Browser"
+                          DefaultBackgroundColor="#FFFFFF"/>
+
+            <Border x:Name="LoadingPanel"
+                    Background="#F3F6FA"
+                    Panel.ZIndex="1">
+
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+
+                    <Image x:Name="SplashImage"
+                           Width="240"
+                           Height="110"
+                           Stretch="Uniform"
+                           Margin="0,0,0,22"/>
+
+                    <ProgressBar IsIndeterminate="True"
+                                 Width="220"
+                                 Height="5"/>
+
+                    <TextBlock x:Name="LoadingText"
+                               Text="Loading application..."
+                               FontSize="15"
+                               Foreground="#173A63"
+                               HorizontalAlignment="Center"
+                               Margin="0,16,0,0"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
